@@ -1,0 +1,93 @@
+<header id="encabezado">
+  <div class="logo">
+    <!-- <img src="/public/images/Milessima.png" alt="logo"> -->
+  </div>
+  <h1>Milessima Gestión de Depósitos</h1>
+</header>
+
+<aside id="sidebar">
+  <ul class="menu">
+    <li><a href="../routes/index.html">Inicio</a></li>
+    <li><a href="">Nosotros</a></li>
+    <li><a href="">Desarrollos</a></li>
+    <li><a href="">Contacto</a></li>
+    <li><a href="login.html">Login</a></li>
+    <li><a href="signup.html">Registro</a></li>
+    <li><button id="btnC">Cerrar Sesión</button></li>
+  </ul>
+</aside>
+
+<main id="seccion-principal">
+  <section id="firstWrap" class="conteiner">
+    <h1 id="title">Bienvenido</h1>
+    <div class="form-container">
+      <div class="form-box">
+        <h1 class="title">Registro</h1>
+        <form id="singupForm">
+          <label class="lbl" for="firstName">
+            <i class="fa-solid fa-user-tie"></i>
+            <input
+              type="text"
+              name="nombre"
+              id="firstNameS"
+              placeholder="Ingrese su nombre"
+            />
+          </label>
+          <label class="lbl" for="lastName">
+            <i class="fa-solid fa-user-tie"></i>
+            <input
+              type="text"
+              name="apellido"
+              id="lastNameS"
+              placeholder="Ingrese su apellido"
+            />
+          </label>
+          <label class="lbl" for="userName">
+            <i class="fa-solid fa-user-tie"></i>
+            <input
+              type="text"
+              name="usuario"
+              id="userNameS"
+              placeholder="Ingrese nombre de usuario"
+            />
+          </label>
+          <label for="email">
+            <i class="fa-solid fa-at"></i>
+            <input
+              type="email"
+              name="email"
+              id="emailS"
+              placeholder="Ingrese su correo"
+            />
+          </label>
+          <label for="role">
+            <i class="fa-solid fa-at"></i>
+            Seleccione su rol:
+            <select name="role" id="role">
+              <option value="">Seleccione un rol</option>
+              <option value="admin">Administrador</option>
+              <option value="user">Usuario</option>
+              <option value="master">Maestro</option>
+            </select>
+          </label>
+          <label for="password"><i class="fa-solid fa-lock"></i><input
+              type="password"
+              name="password"
+              id="passwordS"
+              class="reset"
+              placeholder="Ingrese una contraseña"
+            />
+          </label>
+          <button type="submit" id="btnS">Registrarme</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="foot">
+  <h1>© 2024 Milessima</h1>
+</footer>
+
+<script src="singup.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

@@ -1,0 +1,396 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Wix+Madefor+Display:wght@400..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400..800&display=swap');
+
+/*Esto es un reseteo de las propiedades HTML (Hacer siempre antes de comenzar)*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    vertical-align: baseline;
+}
+
+html {
+    min-height: 100%;
+    position: relative;
+}
+
+/*Configuracion recomendada para el body*/
+body {
+    background-color: #27292b;
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    /*Tener cuidado con deformación*/
+}
+
+/*list-style elimina diseño de lista*/
+ol,
+ul {
+    list-style: none;
+}
+
+/*Eliminamos diseño de link*/
+a {
+    text-decoration: none;
+}
+
+/**/
+#encabezado {
+    /*Trabajamos con flexbox nuestro header (Recomendado)*/
+    display: flex;
+    background-color: #007091;
+    /*Alinea lo distintos elementos dentro del header (un <a> con un <ul> por ej.)*/
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    /*nuestro header ocupa todo el ancho de la página*/
+    width: 100%;
+    /*Nos fija el header al hacer scroll*/
+    position: fixed;
+}
+
+#encabezado h1 {
+    font-family: "Wix Madefor Display";
+    font-weight: 500;
+    color: #efefef;
+    font-size: 1.5rem;
+    margin-right: 1%;
+}
+
+#encabezado .logo img {
+    height: 40px;
+    width: auto;
+    padding-left: 10px;
+
+}
+
+#encabezado nav ul {
+    /*En este caso Flex se aplica sobre cada elemento li, ubicandolos uno al lado del otro.*/
+    display: flex;
+    /*Le da una separación a cada elemento.*/
+    gap: 1.2em;
+    /*con este padding me queda un pequeño espacio a la derechar de la navbar*/
+    padding-right: 10px;
+}
+
+/*Propiedades de los elementos inicio, nosotros....*/
+#encabezado nav ul li a {
+    color: #ffab03;
+    font-family: "Wix Madefor Display";
+    font-weight: 500;
+    transition: all 0.3s ease 0s;
+}
+
+#encabezado nav ul li a:hover {
+    color: #27292b;
+    font-weight: 700;
+}
+
+
+#check {
+    /*Display none oculta un elemento.*/
+    display: none;
+}
+
+/*Configuramos el icono Hamburguesa*/
+.checkbtn {
+    font-size: 25px;
+    color: #007091;
+    float: right;
+    line-height: 80px;
+    margin-right: 20px;
+    cursor: pointer;
+    display: none;
+}
+
+
+/*Aca comienza el trabajo responsive*/
+@media(max-width: 768px) {
+
+    /*Al cumplirse el tamaño se cambia el color del header*/
+    #encabezado {
+        background-color: #ffab03;
+    }
+
+    #encabezado nav ul li a {
+        color: #ffab03;
+    }
+
+    /*aparece la hamburguesa*/
+    .checkbtn {
+        display: block;
+    }
+
+    #encabezado nav ul {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: #007091;
+        text-align: center;
+        top: 50px;
+        left: 100%;
+        transition: all 0.5s;
+    }
+
+    /*nos deja abrir el menu hamb. al hacer click*/
+    #check:checked~ul {
+        left: 0;
+        display: block;
+    }
+
+    #encabezado nav ul li {
+        display: block;
+        margin: 50px 0;
+        line-height: 30px;
+    }
+
+    #encabezado nav ul li a {
+        font-size: 20px;
+    }
+
+}
+
+#sidebar {
+    width: 11%;
+    height: 100vh;
+    background: #007091;
+    color: #ffab03;
+    padding-top: 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#sidebar .menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#sidebar .menu li {
+    padding: 15px;
+}
+
+#sidebar .menu li a {
+    color: #ffab03;
+    text-decoration: none;
+    display: block;
+    font-family: "Wix Madefor Display";
+    font-weight: 500;
+    transition: all 0.3s ease 0s;
+}
+
+#sidebar .menu li a:hover {
+    color: #efefef;
+    font-weight: 700;
+}
+
+#sidebar #btnC,
+.btnP {
+    font-family: 'Wix Madefor Display';
+    font-weight: 600;
+    color: #007091;
+    margin-left: auto;
+    margin-top: 90px;
+    padding: 7px 10px;
+    background-color: #ffab03;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+#sidebar #btnC:hover {
+    background-color: #de0606;
+    color: #ffab03;
+    transform: scale(1.1);
+}
+
+main #seccion-principal {
+    margin-left: 220px;
+    /* Width of sidebar + some margin */
+    padding: 80px 20px 20px 20px;
+    flex: 1;
+}
+
+#firstWrap {
+
+    color: #ffab03;
+    font-family: 'Wix Madefor Display';
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 100px;
+}
+
+#firstWrap #title {
+    text-align: center;
+    margin: 0 0 35px;
+    font-size: 2.5rem;
+}
+
+#firstWrap .form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: auto;
+    margin: auto
+}
+
+#firstWrap .form-container .form-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10%;
+    gap: 10px;
+    margin: 0 1% 0;
+    height: 55vh;
+    width: 25vw;
+    background-color: #007091;
+    border-radius: 15px;
+    transition: all 0.3s ease 0s;
+    justify-content: center;
+    /* Add this line */
+}
+
+#firstWrap .form-container .form-box form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#firstWrap .form-container .form-box:hover {
+    transform: scale(1.015);
+}
+
+#firstWrap .form-container .form-box form button {
+    font-family: 'Wix Madefor Display';
+    font-weight: 600;
+    color: #007091;
+    margin-top: 10px;
+    padding: 7px 10px;
+    background-color: #ffab03;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+#firstWrap .form-container .form-box form button:hover {
+    background-color: #007091;
+    color: #ffab03;
+    transform: scale(1.1);
+}
+
+#firstWrapI {
+    padding: 200px;
+    color: #ffab03;
+    font-family: 'Wix Madefor Display';
+}
+
+#firstWrapI .form-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+#firstWrapI .form-box {
+    width: 45%;
+}
+
+#firstWrapI div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    margin: auto;
+    /*margin: auto => centramos el div*/
+    height: 55vh;
+    width: 35vw;
+    background-color: #007091;
+    border-radius: 15px;
+    transition: all 0.3s ease 0s;
+}
+
+#firstWrapI div form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#firstWrapI div:hover {
+    transform: scale(1.015);
+}
+
+#firstWrapI div form button {
+    font-family: 'Wix Madefor Display';
+    font-weight: 600;
+    color: #007091;
+    margin-top: 10px;
+    padding: 7px 10px;
+    background-color: #ffab03;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+#firstWrapI div form button:hover {
+    background-color: #007091;
+    color: #ffab03;
+    transform: scale(1.1);
+}
+
+/*CONFIGURACION DE ESTILOS DE SWEETALERT*/
+.swal2-title {
+    font-family: 'Wix Madefor Display';
+    color: #ffab03;
+}
+
+@media (max-width: 768px) {
+    #firstWrapI {
+        padding: 75px;
+        /*Separa el contenedor de la navbar*/
+    }
+
+    #firstWrapI .form-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    #firstWrapI .form-container .form-box {
+        height: auto;
+        width: auto;
+        /*el ancho y el alto del div se modifican automaticamente con un minimo de 20 px dado por el padding*/
+        padding: 20px;
+    }
+
+    #firstWrapI .form-container .form-box form button {
+        padding: 10px 15px;
+    }
+}
+
+/*Configuracion del pie de página*/
+#foot {
+    /*Eliminamos el margen inferior y anclamos al fondo*/
+    bottom: 0;
+    background-color: #ffab03;
+    text-align: center;
+    justify-content: center;
+    /*Eliminamos el margen inferior y anclamos al fondo*/
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    /* clear: both; */
+}
+
+#foot h1 {
+    font-family: "Wix Madefor Display";
+    font-weight: 100;
+    font-size: 1.0rem;
+}
