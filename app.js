@@ -87,6 +87,7 @@ app.get("/addProduct", (req, res) => {
 app.use("/api", routesUser);
 app.use("/api", routesLogin);
 app.use("/api", routesAuth);
+// Productos
 app.use("/api", productRouter.getRouter());
 
 app.listen(PORT, () => {

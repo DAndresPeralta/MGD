@@ -4,7 +4,6 @@ const closeSession = document.querySelector(".Boton");
 
 adminForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-
   const userName = document.getElementById("adminName");
   const password = document.getElementById("adminPassword");
 
