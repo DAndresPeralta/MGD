@@ -108,7 +108,6 @@ router.post(
   validateSign,
   passport.authenticate("login", {
     failureRedirect: "/api/failedLogin",
-    failureMessage: true,
     session: false,
   }),
   async (req, res) => {
@@ -122,14 +121,14 @@ router.post(
       });
 
       if (req.user.role === "ADMIN") {
-        res.send({
+        res.status(200).send({
           status: "success",
           title: "Bienvenido",
           payload: req.user,
           redirect: "/index",
         });
       } else {
-        res.send({
+        res.status(200).send({
           status: "success",
           title: "Bienvenido",
           payload: req.user,
@@ -141,18 +140,10 @@ router.post(
 );
 
 router.get("/failedLogin", async (req, res) => {
-  const message = req.session.messages
-    ? req.session.messages[0]
-    : "Error desconocido";
-
-  if (req.session.messages) {
-    delete req.session.messages;
-  }
-
   res.status(400).send({
     status: "error",
-    message: message,
-    title: message,
+    msg: "Error de Autenticacion",
+    title: "Usuario o contraseña incorrectos",
   });
 });
 

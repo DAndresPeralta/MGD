@@ -1,7 +1,7 @@
 // ****************** LADO "BACK" Ó "SERVIDOR" ********************
 
 import express from "express";
-import handlebars from "express-handlebars";
+import { engine } from "express-handlebars";
 // Estas lineas lo que hacen es arreglar el error del enrutamiento necesario para utiliza __dirname
 import path from "path";
 import { fileURLToPath } from "url";
@@ -30,7 +30,14 @@ const productRouter = new ProductsRouter();
 const publicPath = path.resolve(__dirname, "public");
 app.use(express.static(publicPath));
 // Config Handlebars
-app.engine("handlebars", handlebars.engine());
+app.engine(
+  "handlebars",
+  engine({
+    extname: ".handlebars",
+    defaultLayout: "main",
+    partialsDir: __dirname + "/views/partials",
+  })
+);
 app.set("views", __dirname + "/views");
 app.set("view engine", "handlebars");
 // Con esta config puedo leer por consola los json que envie o reciba. Sino lo pongo me saldria todo com undefined

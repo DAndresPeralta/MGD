@@ -21,31 +21,11 @@
     <h1 id="title">INGRESO</h1>
     <div class="form-container">
       <div class="form-box">
-        <h1 class="title">Administrador</h1>
+        <h1 class="title">Credenciales</h1>
         {{! !FORMULARIO 1 }}
-        <form id="adminForm">
-          <label class="lbl" for="adminName">
-            <i class="fa-solid fa-user-tie"></i>
-            <input
-              type="text"
-              name="adminName"
-              id="adminName"
-              placeholder="Ingrese su usuario"
-            />
-          </label>
-          <label for="adminPassword">
-            <i class="fa-solid fa-lock"></i>
-            <input
-              type="password"
-              name="adminPassword"
-              id="adminPassword"
-              placeholder="Ingrese una contraseña"
-            />
-          </label>
-          <button type="submit" id="btnAdmin">Ingresar</button>
-        </form>
+        {{> userForm idURL="adminForm"}}
       </div>
-      <div class="form-box">
+      {{!-- <div class="form-box">
         <h1 class="title">Usuario</h1>
         {{! !FORMULARIO 2 }}
         <form id="userForm">
@@ -69,7 +49,7 @@
           </label>
           <button type="submit" id="btnUser">Ingresar</button>
         </form>
-      </div>
+      </div> --}}
     </div>
   </section>
 </main>
@@ -78,5 +58,6 @@
   <h1>© 2024 Milessima</h1>
 </footer>
 
-<script src="login.js"></script>
+<script type="module" src="login.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

@@ -46,27 +46,7 @@ addView.addEventListener("click", (e) => {
   //   window.location.href = "/addProduct";
   formContainer.innerHTML = `
     <div class="form-box">
-      <form action="/productos/agregar" method="POST">
-        <label for="codeName"></label>
-        <input type="number" id="codeName" name="codeName" placeholder="Codigo" required>
-
-        <label for="productName"></label>
-        <input type="text" id="productName" name="productName" placeholder="Producto" required>
-
-        <label for="brand"></label>
-        <input type="text" id="brand" name="brand" placeholder="Marca" required>
-        
-        <label for="amount"></label>
-        <input type="number" id="amount" name="amount" placeholder="Gramaje" required>
-
-        <label for="stock"></label>
-        <input type="number" id="stock" name="stock" placeholder="Stock" required>
-
-        <label for="obs"></label>
-        <input type="text" id="obs" name="obs" placeholder="Observaciones" required>
-        
-        <button type="submit" id="btnProduct">Agregar Producto</button>
-      </form>
+      {{> productrForm idURL="addProductForm"}}
     </div>
     `;
 });
