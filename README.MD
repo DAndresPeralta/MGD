@@ -1,5 +1,6 @@
 FALTA HACER:
 
+- Aplicar .ENV mediante dotenv.
 - Continuar con Back de Product.:
   - Arreglar al agregar un producto con el mismo codido que se sume las cantidades, no que se sume otro producto separado.
   - Constinuar con arquitectura de capas de product
