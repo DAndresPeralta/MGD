@@ -10,6 +10,11 @@ export const getProductById = async (id) => {
   return result;
 };
 
+export const getProductByCode = async (code) => {
+  const result = await Product.findOne({ code: code });
+  return result;
+};
+
 export const createProduct = async (product) => {
   const result = await Product.create(product);
   return result;

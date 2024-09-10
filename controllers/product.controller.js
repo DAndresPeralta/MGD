@@ -2,6 +2,7 @@ import {
   createProduct,
   deleteProduct,
   getAllProducts,
+  getProductByCode,
   getProductById,
   updateProduct,
 } from "../services/product.services.js";
@@ -28,16 +29,37 @@ export const getProductByIdController = async (req, res) => {
 export const createProductController = async (req, res) => {
   try {
     const { code, product, brand, weight, stock, obs } = req.body;
+    // Buscar producto en la BD por code.
     const role = stock > 0 ? true : false;
-    const result = await createProduct({
-      code,
-      product,
-      brand,
-      weight,
-      stock,
-      role,
-      obs,
-    });
+    const existProduct = await getProductByCode(code);
+
+    if (!existProduct) {
+      const result = await createProduct({
+        code,
+        product,
+        brand,
+        weight,
+        stock,
+        role,
+        obs,
+      });
+      return res.sendSuccess({ result });
+    }
+
+    const pid = existProduct._id;
+    const result = await updateProduct(
+      { _id: pid },
+      {
+        code: existProduct.code,
+        product: existProduct.product,
+        brand: existProduct.brand,
+        weight: existProduct.weight,
+        stock: existProduct.stock + stock,
+        role: role,
+        obs: existProduct.obs,
+      }
+    );
+
     res.sendSuccess({ result });
   } catch (error) {
     res.sendServerError({ message: error.message });
