@@ -1,6 +1,8 @@
+// import axios from "axios";
+import { renderAddProduct } from "./js/renderRoleUser.js";
 const closeSession = document.querySelector(".Boton");
 const btnProducts = document.getElementById("btnProductos");
-const addView = document.getElementById("addView");
+const addProduct = document.getElementById("addProduct");
 const formContainer = document.querySelector(".form-container");
 
 if (closeSession) {
@@ -36,17 +38,70 @@ if (closeSession) {
   });
 }
 
+//* MANEJO DE BOTONES*/
+// Manejo de boton desplegable "Productos"
 btnProducts.addEventListener("click", function () {
   var submenu = document.getElementById("submenuProductos");
   submenu.style.display = submenu.style.display === "none" ? "block" : "none";
 });
 
-addView.addEventListener("click", (e) => {
+//* MANEJO DE SUB-BOTONES*/
+// Manejo de SubBoton "Agregar"
+addProduct.addEventListener("click", (e) => {
   e.preventDefault();
-  //   window.location.href = "/addProduct";
-  formContainer.innerHTML = `
-    <div class="form-box">
-      {{> productrForm idURL="addProductForm"}}
-    </div>
-    `;
+  formContainer.innerHTML = renderAddProduct();
+});
+
+//* MANEJO DE TODOS LOS "SUBMIT" RENDERIZADOS AL INICIO O DINAMICO EN EL DOM*/
+document.body.addEventListener("submit", async (event) => {
+  if (event.target && event.target.id === "formAddProduct") {
+    event.preventDefault();
+    try {
+      const code = document.getElementById("code");
+      const product = document.getElementById("product");
+      const brand = document.getElementById("brand");
+      const amount = document.getElementById("amount");
+      const stock = document.getElementById("stock");
+      const obs = document.getElementById("obs");
+
+      const response = await axios.post(
+        "http://localhost:4000/api/product",
+        {
+          code: code.value,
+          product: product.value,
+          brand: brand.value,
+          amount: amount.value,
+          stock: stock.value,
+          obs: obs.value,
+        },
+        { withCredentials: true }
+      );
+
+      // Obtengo los datos de response capturado por AXIOS.
+      const data = response.data;
+
+      if (response.status >= 200 && response.status < 300) {
+        Swal.fire({
+          //Agregamos una alerta con la LIBRERIA SweetAlert
+          title: data.title,
+          icon: "success",
+          showConfirmButton: false, //Quitamos el boton de confirmacion.
+          timer: 3000, // Timer para que desaparezca automaticamente el alerta.
+          background: "#007091", //Cambiamos el color de fondo.
+        });
+      }
+    } catch (error) {
+      const data = error.response
+        ? error.response.data
+        : { title: "Error", msg: "Error desconocido" };
+
+      Swal.fire({
+        title: data.title || "Error",
+        icon: data.status || "error",
+        showConfirmButton: false,
+        timer: 3000,
+        background: "#007091",
+      });
+    }
+  }
 });
