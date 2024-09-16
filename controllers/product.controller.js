@@ -32,6 +32,8 @@ export const createProductController = async (req, res) => {
     // Buscar producto en la BD por code.
     const role = stock > 0 ? true : false;
     const existProduct = await getProductByCode(code);
+    console.log(weight);
+    console.log(stock);
 
     if (!existProduct) {
       const result = await createProduct({

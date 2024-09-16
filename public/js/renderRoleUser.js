@@ -23,11 +23,11 @@ export const renderAddProduct = () => {
   <label for="brand"></label>
   <input type="text" id="brand" name="brand" placeholder="Marca" required/>
 
-  <label for="amount"></label>
+  <label for="wight"></label>
   <input
     type="number"
-    id="amount"
-    name="amount"
+    id="weight"
+    name="weight"
     placeholder="Gramaje"
     required
   />

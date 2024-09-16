@@ -60,7 +60,7 @@ document.body.addEventListener("submit", async (event) => {
       const code = document.getElementById("code");
       const product = document.getElementById("product");
       const brand = document.getElementById("brand");
-      const amount = document.getElementById("amount");
+      const weight = document.getElementById("weight");
       const stock = document.getElementById("stock");
       const obs = document.getElementById("obs");
 
@@ -70,7 +70,7 @@ document.body.addEventListener("submit", async (event) => {
           code: code.value,
           product: product.value,
           brand: brand.value,
-          amount: amount.value,
+          weight: weight.value,
           stock: stock.value,
           obs: obs.value,
         },

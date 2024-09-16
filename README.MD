@@ -1,10 +1,12 @@
 FALTA HACER:
 
-- Aplicar .ENV mediante dotenv.
 - Continuar con Back de Product.:
-  - Constinuar con arquitectura de capas de product
-- Comenzar vista menu de usuarios para product.
-- En agregar product desde usuario, renderizar el formulario con un partial
+
+  - Constinuar con arquitectura de capas de product.
+
+- PRODUCTO
+  - Mejorar SweetAlerts
+  - Mejorar validaciones (impedir en el back que se pueda enviar formulario con algun campo vacio)
 
 ---
 
@@ -18,3 +20,9 @@ FALTA HACER:
 ### **10/9/24:**
 
 - Se agrego al endpoint post de product, al agregar un producto con el mismo codido, que se incremente su cantidad y no que se agregue nuevamente.
+
+### **15/9/24:**
+
+- Se agrego una carpeta js en public que contendrá funciones que retornen variables que contienen renderizado para manejo del DOM en el front.
+- Se agrego formulario de Producto POST.
+- Se agregó viewsRouter para manejar los renderizados y limpiar app.js
