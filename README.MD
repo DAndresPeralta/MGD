@@ -8,6 +8,8 @@ FALTA HACER:
   - Mejorar SweetAlerts
   - Mejorar validaciones (impedir en el back que se pueda enviar formulario con algun campo vacio)
 
+- Desarrollar PEDIDOS y CLIENTES. Trabajar en la asignacion de un pedido a un cliente, el cual contendrá los productos que el cliente pida. En la vistas de podra ingresar a un cliente en particular y se podran ver todos los pedidos del cliente. Los pedidos deberan contar con un atributo "Estado" el cual se modificara de acuerdo al estado del pedido (pendiente, en tránsito, enviado), podria considerarse otro atributo que haga referencia al estado financiero del pedido (impago, pago).
+
 ---
 
 ## LIBRO DE CAMPO
