@@ -17,6 +17,7 @@ import routesView from "./router/views.router.js";
 import initializePassport from "./config/passport.config.js";
 import { passportCall, authorization } from "./utils/utils.js";
 import config from "./config/config.js";
+import cors from "cors";
 
 // Server: Creamos el servidor
 // Con los siguientes pasos los que hacemos es levantar un servidor.
@@ -47,6 +48,13 @@ app.use(cookieParser("msg"));
 app.use(flash());
 app.use(passport.initialize());
 initializePassport();
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    methods: "GET, POST",
+    credentials: true,
+  })
+);
 
 mongoose
   .connect(config.mongoUrl)

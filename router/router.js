@@ -52,7 +52,7 @@ export default class CustomRouter {
         // Aca lo que hace apply es llamar a el [] callback.
         // This asegura que se llame a la instancia contenida en la clase(mayor consistencia).
         // params envia todos los parametros contenidos en dicho [].
-        await callback.apply(this, params);
+        await callback(...params);
       } catch (error) {
         console.log(error);
         params[1].status(500).send(error);

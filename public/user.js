@@ -1,8 +1,10 @@
 // import axios from "axios";
 import { renderAddProduct } from "./js/renderRoleUser.js";
+import { renderGetProduct } from "./js/renderRoleUser.js";
 const closeSession = document.querySelector(".Boton");
 const btnProducts = document.getElementById("btnProductos");
 const addProduct = document.getElementById("addProduct");
+const getProduct = document.getElementById("getProduct");
 const formContainer = document.querySelector(".form-container");
 
 if (closeSession) {
@@ -46,10 +48,26 @@ btnProducts.addEventListener("click", function () {
 });
 
 //* MANEJO DE SUB-BOTONES*/
+
 // Manejo de SubBoton "Agregar"
 addProduct.addEventListener("click", (e) => {
   e.preventDefault();
   formContainer.innerHTML = renderAddProduct();
+});
+
+// Manejo de SubBoton "Consultar"
+getProduct.addEventListener("click", async (e) => {
+  e.preventDefault();
+
+  const response = await axios.get("http://localhost:4000/api/product");
+  console.log(response.data);
+
+  const products = response.data.payload.result; // Accede al array de productos dentro de 'result'
+
+  products.forEach((item) => {
+    console.log(item);
+    formContainer.innerHTML += renderGetProduct(item);
+  });
 });
 
 //* MANEJO DE TODOS LOS "SUBMIT" RENDERIZADOS AL INICIO O DINAMICO EN EL DOM*/

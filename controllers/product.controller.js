@@ -26,7 +26,7 @@ export const getProductByIdController = async (req, res) => {
   }
 };
 
-export const createProductController = async (req, res) => {
+export const createProductController = async (req, res, next) => {
   try {
     const { code, product, brand, weight, stock, obs } = req.body;
     // Buscar producto en la BD por code.

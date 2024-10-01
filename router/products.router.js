@@ -1,4 +1,3 @@
-import productService from "../models/product.model.js";
 import {
   createProductController,
   deleteProductController,
@@ -7,6 +6,7 @@ import {
   updateProductController,
 } from "../controllers/product.controller.js";
 import CustomRouter from "./router.js";
+import { validateCreate } from "../validators/products.validator.js";
 
 // AGREGAR PAGINATE,respuestas especiales como "sin productos almacenados"
 export default class ProductRouter extends CustomRouter {
