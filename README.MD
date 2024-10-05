@@ -1,15 +1,17 @@
 FALTA HACER:
 
-- Continuar con Back de Product.:
-
-  - Constinuar con arquitectura de capas de product.
-
 - PRODUCTO
 
   - Mejorar SweetAlerts
   - Mejorar validaciones (impedir en el back que se pueda enviar formulario con algun campo vacio) = (ver validateCreate en router avanzado)
 
 - Desarrollar PEDIDOS y CLIENTES. Trabajar en la asignacion de un pedido a un cliente, el cual contendrá los productos que el cliente pida. En la vistas de podra ingresar a un cliente en particular y se podran ver todos los pedidos del cliente. Los pedidos deberan contar con un atributo "Estado" el cual se modificara de acuerdo al estado del pedido (pendiente, en tránsito, enviado), podria considerarse otro atributo que haga referencia al estado financiero del pedido (impago, pago).
+
+- CLIENTE
+
+  - En un futuro modificar o agregar manejo de clientes por code (controllers), actualmente trabajando con id para hacer pruebas desde POSTMAN.
+  - Manejar validaciones: Cuil del tamaño correspondiente.
+  - Agregar productos al array orders de Client.
 
 ---
 
@@ -33,3 +35,7 @@ FALTA HACER:
 ### **22/09/24:**
 
 - Se crearon los models de Cliente y Pedidos.
+
+### **05/10/24:**
+
+- Se agrega back para clientes. Se utiliza manejo de creacion, update, etc. con ID. Modificar o agregar manejo por code para que sea funcional a las distintas vistas.

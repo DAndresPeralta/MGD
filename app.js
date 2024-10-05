@@ -13,6 +13,7 @@ import routesUser from "./router/users.router.js";
 import routesLogin from "./router/login.router.js";
 import routesAuth from "./router/auth.router.js";
 import ProductsRouter from "./router/products.router.js";
+import ClientRouter from "./router/clients.router.js";
 import routesView from "./router/views.router.js";
 import initializePassport from "./config/passport.config.js";
 import { passportCall, authorization } from "./utils/utils.js";
@@ -25,6 +26,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const PORT = config.port;
 const productRouter = new ProductsRouter();
+const clientRouter = new ClientRouter();
 
 // ***** SETTINGS *****
 // Hago mi carpeta public estatica para poder acceder
@@ -100,6 +102,8 @@ app.use("/api", routesLogin);
 app.use("/api", routesAuth);
 // Productos
 app.use("/api", productRouter.getRouter());
+// Clientes
+app.use("/api", clientRouter.getRouter());
 
 app.listen(PORT, () => {
   console.log("Server running on port: ", PORT);
