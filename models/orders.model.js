@@ -3,6 +3,14 @@ import mongoose from "mongoose";
 const orderCollection = "order";
 
 const orderSchema = new mongoose.Schema({
+  client: {
+    type: [
+      {
+        client: { type: mongoose.Schema.Types.ObjectId, ref: "client" },
+      },
+    ],
+    default: [],
+  },
   item: {
     type: [
       {

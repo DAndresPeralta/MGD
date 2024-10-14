@@ -6,7 +6,9 @@ export const getAllClients = async () => {
 };
 
 export const getClientById = async (id) => {
-  const result = await Client.findById({ _id: id });
+  const result = await Client.findById({ _id: id })
+    .populate("orders.order")
+    .lean();
   return result;
 };
 
