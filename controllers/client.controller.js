@@ -20,6 +20,7 @@ export const getClientByIdController = async (req, res) => {
   try {
     const cid = req.params.id;
     const result = await getClientById(cid);
+    console.log(result);
     res.sendSuccess({ result });
   } catch (error) {
     res.sendServerError({ message: error.message });
