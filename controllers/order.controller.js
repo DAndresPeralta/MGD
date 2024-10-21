@@ -124,7 +124,35 @@ export const updateOrderController = async (req, res) => {
 
     // Traigo la orden correspondiente al id extraido
     const existOrder = await getOrderById(oid);
+
     if (!existOrder) return res.sendUserError({ msg: "Orden inexistente." });
+
+    //----------------------------
+    // Elimino la orden del cliente viejo
+    // Busco el cliente viejo a traves del existOrder
+    const oldClient = await getClientById(
+      existOrder.client[0].client._id.toString()
+    );
+
+    // Elimino la orden del array orders con un filter
+    oldClient.orders = oldClient.orders.filter(
+      (e) => e.order._id.toString() !== oid
+    );
+
+    // Envio a updateClient los parametros para persistir.
+    const resultOldClient = await updateClient(oldClient._id, oldClient);
+    //---------------------------
+
+    // Busco el cliente nuevo.
+    let newClient = await getClientById(cid);
+
+    // Agrego a su array orders la nueva orden.
+    newClient.orders = [...newClient.orders, { order: oid }];
+
+    // Envio a updateClient los parametros para persistir.
+    const resultNewClient = await updateClient(cid, newClient);
+
+    //---------------------------
 
     // Modifico o mantengo los atributos
     existOrder.client =
@@ -145,7 +173,8 @@ export const updateOrderController = async (req, res) => {
     // Modifico el atributo item y le asigno el nuevo array.
     existOrder.item = updatedProduct;
 
-    let result = await updateOrder({ _id: oidp }, existOrder);
+    // let result = "oki";
+    let result = await updateOrder({ _id: oid }, existOrder);
     return res.sendSuccess({ result });
   } catch (error) {
     res.sendServerError({ message: error.message });

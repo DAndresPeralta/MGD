@@ -15,7 +15,6 @@ FALTA HACER:
 - ORDENES
 
   - Al eliminar una orden por completo, se deberia eliminar la misma del cliente. (Manejo sensible de datos. Solo para Admin o Master)
-  - Al modificar el cliente de una orden hacer el manejo para que el cliente en cuestion tambien modifique la orden sin sobreescribir el array.
 
 ---
 
@@ -57,3 +56,7 @@ FALTA HACER:
 ### **13/10/24:**
 
 - Se agrego la funcionalidad que al modificar el producto en una orden el mismo se modifique sin sobreescribir el array.
+
+### **20/10/24:**
+
+- Se agrego la funcionalidad: Al modificar el cliente asignado a una orden, este se cambia en la orden, se elimina la orden del cliente viejo y se le asigna al nuevo cliente.
