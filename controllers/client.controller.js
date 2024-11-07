@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import {
   createClient,
   deleteClient,
@@ -20,6 +21,11 @@ export const getClientByIdController = async (req, res) => {
   try {
     const cid = req.params.id;
     const result = await getClientById(cid);
+    if (!result) {
+      return res.sendUserError({
+        message: "El cliente no pertenece a la base de datos.",
+      });
+    }
     console.log(result);
     res.sendSuccess({ result });
   } catch (error) {

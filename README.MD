@@ -1,22 +1,32 @@
 FALTA HACER:
 
-- PRODUCTO
+- GENERAL
 
-  - Mejorar validaciones (impedir en el back que se pueda enviar formulario con algun campo vacio) = (ver validateCreate en router avanzado)
+  - | Tarea      | Descripción                      | Estado        |
+    | ---------- | -------------------------------- | ------------- |
+    | BackEnd M3 | Integrar lo visto en el módulo 3 | **Pendiente** |
+
+- PRODUCTO
 
 - Desarrollar PEDIDOS y CLIENTES. Trabajar en la asignacion de un pedido a un cliente, el cual contendrá los productos que el cliente pida. En la vistas de podra ingresar a un cliente en particular y se podran ver todos los pedidos del cliente. Los pedidos deberan contar con un atributo "Estado" el cual se modificara de acuerdo al estado del pedido (pendiente, en tránsito, enviado), podria considerarse otro atributo que haga referencia al estado financiero del pedido (impago, pago).
 
+  - | Tarea   | Descripción                                      | Estado        |
+    | ------- | ------------------------------------------------ | ------------- |
+    | Validar | Impedir en el back que se envie formulario vacio | **Pendiente** |
+
 - CLIENTE
 
-  - En un futuro modificar o agregar manejo de clientes por code (controllers), actualmente trabajando con id para hacer pruebas desde POSTMAN.
-  - Manejar validaciones: Cuil del tamaño correspondiente.
-  - Incluir que cada cliente muestre sus ordenes asociadas.
+  - | Tarea            | Descripción                                                            | Estado        |
+    | ---------------- | ---------------------------------------------------------------------- | ------------- |
+    | Manejo por Code  | En un futuro manejar por Code, no por Id                               | **Pendiente** |
+    | Validar Cuil     | Validar el tamaño del cuil, sin guiones en back                        | **Pendiente** |
+    | Get Client By Id | Al traer el cliente se ve en order el cliente de la orden (Redundante) | **Pendiente** |
 
 - ORDENES
 
-  - Al eliminar una orden por completo, se deberia eliminar la misma del cliente. (Manejo sensible de datos. Solo para Admin o Master)
-
----
+  - | Tarea          | Descripción                                                    | Estado        |
+    | -------------- | -------------------------------------------------------------- | ------------- |
+    | Eliminar Orden | Al eliminar una orden, tambien eliminarla del cliente **(MS)** | **Pendiente** |
 
 ## LIBRO DE CAMPO
 
