@@ -1,0 +1,3 @@
+[31mfatal[39m: Error al obtener cliente Cast to ObjectId failed for value "{ _id: '9983' }" (type Object) at path "_id" for model "client"
+[31merror[39m: Error al obtener cliente Cast to ObjectId failed for value "{ _id: '9983' }" (type Object) at path "_id" for model "client"
+[35merror[39m: Error al obtener cliente Cast to ObjectId failed for value "{ _id: '9983' }" (type Object) at path "_id" for model "client"

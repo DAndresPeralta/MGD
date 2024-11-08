@@ -20,6 +20,7 @@ import initializePassport from "./config/passport.config.js";
 import { passportCall, authorization } from "./utils/utils.js";
 import config from "./config/config.js";
 import cors from "cors";
+import compressionMiddleware from "./config/compression.js";
 
 // Server: Creamos el servidor
 // Con los siguientes pasos los que hacemos es levantar un servidor.
@@ -95,6 +96,9 @@ mongoose
 // app.get("/addProduct", (req, res) => {
 //   res.render("addProduct");
 // });
+
+// Configuro compressio Brotli
+app.use(compressionMiddleware);
 
 // VIEWS
 app.use("/", routesView);

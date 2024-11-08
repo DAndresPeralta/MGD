@@ -2,9 +2,10 @@ FALTA HACER:
 
 - GENERAL
 
-  - | Tarea      | Descripción                      | Estado        |
-    | ---------- | -------------------------------- | ------------- |
-    | BackEnd M3 | Integrar lo visto en el módulo 3 | **Pendiente** |
+  - | Tarea      | Descripción                                                        | Estado        |
+    | ---------- | ------------------------------------------------------------------ | ------------- |
+    | BackEnd M3 | Integrar lo visto en el módulo 3                                   | **Pendiente** |
+    | Winston    | Completar para todos los módulos y utilizarlo para debug, chau log | **En curso**  |
 
 - PRODUCTO
 
@@ -70,3 +71,8 @@ FALTA HACER:
 ### **20/10/24:**
 
 - Se agrego la funcionalidad: Al modificar el cliente asignado a una orden, este se cambia en la orden, se elimina la orden del cliente viejo y se le asigna al nuevo cliente.
+
+### **07/11/24:**
+
+- Se agrego: Se configuro Compression Brotli para Optimización (se dejo en app, ya funcionando).
+- Se agrego: Se configuro el Logger Winston para consola y para registro en archivo. (**Ver tabla General**)
