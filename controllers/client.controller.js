@@ -7,10 +7,12 @@ import {
   getClientById,
   updateClient,
 } from "../services/client.services.js";
+import logger from "../utils/logger.js";
 
 export const getAllClientsController = async (req, res) => {
   try {
     const result = await getAllClients();
+    logger.debug("Clientes obtenidos con éxito.");
     res.sendSuccess({ result });
   } catch (error) {
     res.sendServerError({ message: error.message });
@@ -22,13 +24,14 @@ export const getClientByIdController = async (req, res) => {
     const cid = req.params.id;
     const result = await getClientById(cid);
     if (!result) {
+      logger.warn("El cliente no pertenece a la base de datos.");
       return res.sendUserError({
         message: "El cliente no pertenece a la base de datos.",
       });
     }
-    console.log(result);
     res.sendSuccess({ result });
   } catch (error) {
+    logger.error(`Error al obtener cliente ${error.message}`);
     res.sendServerError({ message: error.message });
   }
 };
