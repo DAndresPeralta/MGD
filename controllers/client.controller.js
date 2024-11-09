@@ -12,9 +12,10 @@ import logger from "../utils/logger.js";
 export const getAllClientsController = async (req, res) => {
   try {
     const result = await getAllClients();
-    logger.debug("Clientes obtenidos con éxito.");
+    logger.info("Clientes obtenidos con éxito.");
     res.sendSuccess({ result });
   } catch (error) {
+    logger.error(`Error al obtener los clientes ${error.message}`);
     res.sendServerError({ message: error.message });
   }
 };
@@ -29,6 +30,7 @@ export const getClientByIdController = async (req, res) => {
         message: "El cliente no pertenece a la base de datos.",
       });
     }
+    logger.info("Cliente obtenido con éxito");
     res.sendSuccess({ result });
   } catch (error) {
     logger.error(`Error al obtener cliente ${error.message}`);
@@ -40,8 +42,18 @@ export const getClientByCodeController = async (req, res) => {
   try {
     const { code } = req.body;
     const result = await getClientByCode(code);
+    if (!result) {
+      logger.warn("El cliente no pertenece a la base de datos.");
+      return res.sendUserError({
+        message: "El cliente no pertenece a la base de datos.",
+      });
+    }
+    logger.info("Cliente obtenido con éxito");
     res.sendSuccess({ result });
-  } catch (error) {}
+  } catch (error) {
+    logger.error(`Error al obtener cliente ${error.message}`);
+    res.sendServerError({ message: error.message });
+  }
 };
 
 export const createClientController = async (req, res) => {
@@ -60,10 +72,13 @@ export const createClientController = async (req, res) => {
         status: true,
       };
       const result = await createClient(data);
+      logger.info("Cliente creado con éxito");
       return res.sendSuccess({ result });
     }
+    logger.warn("Cliente existente");
     return res.sendUserError({ msg: "Cliente ya registrado" });
   } catch (error) {
+    logger.error(`Error al crear el cliente ${error.message}`);
     res.sendServerError({ message: error.message });
   }
 };
@@ -119,9 +134,14 @@ export const updateClientController = async (req, res) => {
           : existClient.status;
 
       let result = await updateClient({ _id: id }, existClient);
+      logger.info("Cliente modificado con éxito");
       res.sendSuccess({ result });
+    } else {
+      logger.warn("El cliente no existe");
+      res.sendUserError({ msg: "El cliente no existe en la base de datos" });
     }
   } catch (error) {
+    logger.error(`Error al modificar el cliente ${error.message}`);
     res.sendServerError({ message: error.message });
   }
 };
@@ -130,8 +150,10 @@ export const deleteClientController = async (req, res) => {
   try {
     const id = req.params.id;
     const result = await deleteClient(id);
+    logger.info("Cliente eliminado con éxito");
     res.sendSuccess({ result });
   } catch (error) {
+    logger.error(`Error al eliminar el cliente ${error.message}`);
     res.sendServerError({ message: error.message });
   }
 };

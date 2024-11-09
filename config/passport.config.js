@@ -3,6 +3,7 @@ import passport from "passport";
 import local from "passport-local";
 import jwt, { ExtractJwt } from "passport-jwt";
 import userService from "../models/user.model.js";
+import logger from "../utils/logger.js";
 import {
   cookieExtractor,
   createHash,
@@ -22,6 +23,7 @@ const initializePassport = () => {
         try {
           let user = await userService.findOne({ userName: userName });
           if (user) {
+            logger.warn("El usuario ya esta registrado.");
             return done(null, false, {
               message: "El usuario ya esta registrado",
             });
@@ -35,6 +37,7 @@ const initializePassport = () => {
             password: await createHash(password),
           };
           let result = await userService.create(newUser);
+          logger.info("Usuario registrado con éxito");
           return done(null, result);
         } catch (error) {
           return done(error);
@@ -51,6 +54,7 @@ const initializePassport = () => {
         try {
           const userCheck = await userService.findOne({ userName: userName });
           if (!userCheck) {
+            logger.warn("Usuario inexistente");
             return done(null, false, { message: "Usuario inexistente" });
           }
 
@@ -60,8 +64,10 @@ const initializePassport = () => {
           );
 
           if (!passwordCheck) {
+            logger.warn("Contraseña incorrecta.");
             return done(null, false, { message: "Contraseña incorrecta" });
           }
+          logger.info("Inicio de sesión exitoso.");
           return done(null, userCheck, { message: "Bienvenido" });
         } catch (error) {
           return done(error);

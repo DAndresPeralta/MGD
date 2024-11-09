@@ -2,10 +2,10 @@ FALTA HACER:
 
 - GENERAL
 
-  - | Tarea      | Descripción                                                        | Estado        |
-    | ---------- | ------------------------------------------------------------------ | ------------- |
-    | BackEnd M3 | Integrar lo visto en el módulo 3                                   | **Pendiente** |
-    | Winston    | Completar para todos los módulos y utilizarlo para debug, chau log | **En curso**  |
+  - | Tarea      | Descripción                                                  | Estado       |
+    | ---------- | ------------------------------------------------------------ | ------------ |
+    | BackEnd M3 | Integrar lo visto en el módulo 3                             | **En curso** |
+    | Winston    | Completar para todos los controllers y utilizarlo para debug | **Completo** |
 
 - PRODUCTO
 
@@ -76,3 +76,8 @@ FALTA HACER:
 
 - Se agrego: Se configuro Compression Brotli para Optimización (se dejo en app, ya funcionando).
 - Se agrego: Se configuro el Logger Winston para consola y para registro en archivo. (**Ver tabla General**)
+
+### **09/11/24:**
+
+- Se integro el uso del logger Winston a nivel del controlador y passport.
+- Se integro el uso de artillery para prueba de rendimiento en el endpoint agregar producto.
