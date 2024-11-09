@@ -1,3 +1,8 @@
 [31mfatal[39m: Error al obtener cliente Cast to ObjectId failed for value "{ _id: '9983' }" (type Object) at path "_id" for model "client"
 [31merror[39m: Error al obtener cliente Cast to ObjectId failed for value "{ _id: '9983' }" (type Object) at path "_id" for model "client"
 [35merror[39m: Error al obtener cliente Cast to ObjectId failed for value "{ _id: '9983' }" (type Object) at path "_id" for model "client"
+[35merror[39m: Error al crear el producto Cast to Number failed for value "NaN" (type number) at path "stock"
+[35merror[39m: Error al crear el producto Cast to Number failed for value "NaN" (type number) at path "stock"
+[35merror[39m: Error al crear el producto Cast to Number failed for value "NaN" (type number) at path "stock"
+[35merror[39m: Error al obtener cliente logger.warn is not a function
+[35merror[39m: Error al obtener cliente logger.warn is not a function

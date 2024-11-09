@@ -21,6 +21,8 @@ import { passportCall, authorization } from "./utils/utils.js";
 import config from "./config/config.js";
 import cors from "cors";
 import compressionMiddleware from "./config/compression.js";
+// --- Test Artillery ---
+import productFaker from "./test/performance/productFaker.js";
 
 // Server: Creamos el servidor
 // Con los siguientes pasos los que hacemos es levantar un servidor.
@@ -103,6 +105,7 @@ app.use(compressionMiddleware);
 // VIEWS
 app.use("/", routesView);
 // Al presionar "registrar" en la pagina, se envia mediante fetch un metodo post que se comunica, en el back, con "api/register", este a su vez se comunica con el router-
+// Register y Login
 app.use("/api", routesUser);
 app.use("/api", routesLogin);
 app.use("/api", routesAuth);
@@ -112,6 +115,8 @@ app.use("/api", productRouter.getRouter());
 app.use("/api", clientRouter.getRouter());
 // Ordenes
 app.use("/api", orderRouter.getRouter());
+// Test
+app.use("/api", productFaker);
 
 app.listen(PORT, () => {
   console.log("Server running on port: ", PORT);

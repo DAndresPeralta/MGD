@@ -1,0 +1,39 @@
+config:
+  plugins:
+    metrics-by-endpoint: {}
+  target: "http://localhost:4000"
+  phases:
+    - duration: 20
+      arrivalRate: 10
+scenarios:
+  - name: "Product"
+    flow:
+      - log: "Creamos las variables para la prueba productos."
+      - get:
+          url: "/api/test/product"
+          capture:
+            - json: "$.code"
+              as: "code"
+            - json: "$.product"
+              as: "product"
+            - json: "$.brand"
+              as: "brand"
+            - json: "$.weight"
+              as: "weight"
+            - json: "$.stock"
+              as: "stock"
+            - json: "$.role"
+              as: "role"
+            - json: "$.obs"
+              as: "obs"
+      - log: "Registrando productos"
+      - post:
+          url: "/api/product"
+          json:
+            code: "{{ code }}"
+            product: "{{ product }}"
+            brand: "{{ brand }}"
+            weight: "{{ weight }}"
+            stock: "{{ stock }}"
+            role: "{{ role }}"
+            obs: "{{ obs }}"

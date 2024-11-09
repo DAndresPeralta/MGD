@@ -6,12 +6,15 @@ import {
   getProductById,
   updateProduct,
 } from "../services/product.services.js";
+import logger from "../utils/logger.js";
 
 export const getAllProductsController = async (req, res) => {
   try {
     const result = await getAllProducts();
+    logger.info("Productos obtenidos con éxito.");
     res.sendSuccess({ result });
   } catch (error) {
+    logger.error(`Error al obtener los productos ${error.message}`);
     res.sendServerError({ message: error.message });
   }
 };
@@ -20,8 +23,10 @@ export const getProductByIdController = async (req, res) => {
   try {
     const pid = req.params.id;
     const result = await getProductById(pid);
+    logger.info("Producto obtenido con éxito.");
     res.sendSuccess({ result });
   } catch (error) {
+    logger.error(`Error al obtener el producto ${error.message}`);
     res.sendServerError({ message: error.message });
   }
 };
@@ -31,9 +36,8 @@ export const createProductController = async (req, res, next) => {
     const { code, product, brand, weight, stock, obs } = req.body;
     // Buscar producto en la BD por code.
     const role = stock > 0 ? true : false;
+
     const existProduct = await getProductByCode(code);
-    console.log(weight);
-    console.log(stock);
 
     if (!existProduct) {
       const result = await createProduct({
@@ -45,6 +49,7 @@ export const createProductController = async (req, res, next) => {
         role,
         obs,
       });
+      logger.info("Producto creado con éxito.");
       return res.sendSuccess({ result });
     }
 
@@ -61,9 +66,10 @@ export const createProductController = async (req, res, next) => {
         obs: existProduct.obs,
       }
     );
-
+    logger.info("Stock incrementado con éxito");
     res.sendSuccess({ result });
   } catch (error) {
+    logger.error(`Error al crear el producto ${error.message}`);
     res.sendServerError({ message: error.message });
   }
 };
@@ -127,9 +133,14 @@ export const updateProductController = async (req, res) => {
           : extractedProduct.obs;
 
       let result = await updateProduct({ _id: pid }, extractedProduct);
+      logger.info("Producto modificado con éxito.");
       res.sendSuccess({ result });
+    } else {
+      logger.warn("Producto inexistente.");
+      res.senUserError({ msg: "Producto inexistente." });
     }
   } catch (error) {
+    logger.error(`Error al modificar los productos ${error.message}`);
     res.sendServerError({ message: error.message });
   }
 };
@@ -138,8 +149,10 @@ export const deleteProductController = async (req, res) => {
   try {
     const pid = req.params.id;
     const result = await deleteProduct(pid);
+    logger.info("Producto eliminado con éxito");
     res.sendSuccess({ result });
   } catch (error) {
+    logger.error(`Error al eliminar el producto ${error.message}`);
     res.sendServerError({ message: error.message });
   }
 };

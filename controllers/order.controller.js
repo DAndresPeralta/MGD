@@ -7,13 +7,16 @@ import {
   updateOrder,
 } from "../services/order.services.js";
 import { getClientById, updateClient } from "../services/client.services.js";
+import logger from "../utils/logger.js";
 
 // Traemos todas las ordenes
 export const getAllOrdersController = async (req, res) => {
   try {
     const result = await getAllOrders();
+    logger.info("Ordenes obtenidas con éxito");
     res.sendSuccess({ result });
   } catch (error) {
+    logger.error(`Error al obtener ordenes ${error.message}`);
     res.sendServerError({ message: error.message });
   }
 };
@@ -23,8 +26,10 @@ export const getOrderByIdController = async (req, res) => {
   try {
     const oid = req.params.id;
     const result = await getOrderById(oid);
+    logger.info("Orden obtenida con éxito");
     res.sendSuccess({ result });
   } catch (error) {
+    logger.error(`Error al obtener la orden ${error.message}`);
     res.sendServerError({ message: error.message });
   }
 };
@@ -37,6 +42,7 @@ export const createOrderController = async (req, res) => {
     if (pid === undefined) {
       const { item, status, pay } = req.body;
       if (!mongoose.Types.ObjectId.isValid(cid)) {
+        logger.warn("Cliente inexistente");
         return res.sendUserError({ msg: "Cliente inexistente." });
       }
 
@@ -69,6 +75,7 @@ export const createOrderController = async (req, res) => {
 
       // Modifico el cliente.
       await updateClient(cid, assigningOrder);
+      logger.info("Orden creada con éxito");
       return res.sendSuccess({ result });
     } else {
       const { quantity, status, pay } = req.body;
@@ -77,6 +84,7 @@ export const createOrderController = async (req, res) => {
         !mongoose.Types.ObjectId.isValid(cid) ||
         !mongoose.Types.ObjectId.isValid(pid)
       ) {
+        logger.warn("Cliente o producto inexistentes.");
         return res.sendUserError({ msg: "Cliente o producto inexistentes." });
       }
 
@@ -108,9 +116,11 @@ export const createOrderController = async (req, res) => {
 
       // Modifico el cliente.
       await updateClient(cid, assigningOrder);
+      logger.info("Orden creada con éxito.");
       return res.sendSuccess({ result });
     }
   } catch (error) {
+    logger.error(`Error al crear la orden ${error.message}`);
     res.sendServerError({ message: error.message });
   }
 };
@@ -175,8 +185,10 @@ export const updateOrderController = async (req, res) => {
 
     // let result = "oki";
     let result = await updateOrder({ _id: oid }, existOrder);
+    logger.info("Orden modificada con éxito.");
     return res.sendSuccess({ result });
   } catch (error) {
+    logger.error(`Error al modificar la orden ${error.message}`);
     res.sendServerError({ message: error.message });
   }
 };
@@ -190,14 +202,17 @@ export const deleteProductFromOrder = async (req, res) => {
       !mongoose.Types.ObjectId.isValid(cid) ||
       !mongoose.Types.ObjectId.isValid(pid)
     ) {
+      logger.warn("Carrito o producto inexistentes.");
       return res.status(400).json({ msg: "ID de carrito o producto inválido" });
     }
 
     const data = { $pull: { item: { product: pid } } };
 
     const result = await updateOrder(cid, data);
+    logger.info("Producto eliminado correctamente.");
     res.sendSuccess({ result });
   } catch (error) {
+    logger.error(`Error al eliminar un producto de la orden ${error.message}`);
     res.sendServerError({ message: error.message });
   }
 };
@@ -207,8 +222,10 @@ export const deleteOrderController = async (req, res) => {
   try {
     const id = req.params.id;
     const result = await deleteOrder(id);
+    logger.info("Orden eliminada correctamente.");
     res.sendSuccess({ result });
   } catch (error) {
+    logger.error(`Error al eliminar la orden ${error.message}`);
     res.sendServerError({ message: error.message });
   }
 };
