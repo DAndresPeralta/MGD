@@ -81,3 +81,7 @@ FALTA HACER:
 
 - Se integro el uso del logger Winston a nivel del controlador y passport.
 - Se integro el uso de artillery para prueba de rendimiento en el endpoint agregar producto.
+
+### **09/11/24:**
+
+- Se modifico la estructura del directorio.
