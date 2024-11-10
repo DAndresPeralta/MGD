@@ -25,9 +25,10 @@ FALTA HACER:
 
 - ORDENES
 
-  - | Tarea          | Descripción                                                    | Estado       |
-    | -------------- | -------------------------------------------------------------- | ------------ |
-    | Eliminar Orden | Al eliminar una orden, tambien eliminarla del cliente **(MS)** | **Completo** |
+  - | Tarea          | Descripción                                                    | Estado        |
+    | -------------- | -------------------------------------------------------------- | ------------- |
+    | Eliminar Orden | Al eliminar una orden, tambien eliminarla del cliente **(MS)** | **Completo**  |
+    | Eliminar Orden | Al ejecutar endpoint, verificar Token, es posible? **(MS)**    | **Pendiente** |
 
 ## LIBRO DE CAMPO
 
