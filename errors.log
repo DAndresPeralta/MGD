@@ -8,3 +8,30 @@
 [35merror[39m: Error al obtener cliente logger.warn is not a function
 [35merror[39m: Error al crear el cliente logger.warn is not a function
 [35merror[39m: Error al crear el cliente logger.warn is not a function
+[35merror[39m: Error al crear la orden Cannot read properties of null (reading 'code')
+[35merror[39m: Error al eliminar la orden result is not defined
+[35merror[39m: Error al eliminar la orden result is not defined
+[35merror[39m: Error al eliminar la orden result is not defined
+[35merror[39m: Error al eliminar la orden result is not defined
+[35merror[39m: Error al eliminar la orden result is not defined
+[35merror[39m: Error al eliminar la orden result is not defined
+[35merror[39m: Error al eliminar la orden Cast to ObjectId failed for value "{ _id: '67302d1d9b3a46522fa981a' }" (type Object) at path "_id" for model "order"
+[35merror[39m: Error al eliminar la orden Cast to ObjectId failed for value "{ _id: '67302d1d9b3a46522fa981a' }" (type Object) at path "_id" for model "order"
+[35merror[39m: Error al eliminar la orden Cast to ObjectId failed for value "{ _id: '67302d1d9b3a46522fa981a' }" (type Object) at path "_id" for model "order"
+[35merror[39m: Error al eliminar la orden result is not defined
+[35merror[39m: Error al eliminar la orden result is not defined
+[35merror[39m: Error al eliminar la orden Cannot read properties of null (reading '_id')
+[35merror[39m: Error al eliminar la orden Cannot read properties of null (reading '_id')
+[35merror[39m: Error al eliminar la orden Cannot read properties of null (reading '_id')
+[35merror[39m: Error al eliminar la orden Cannot read properties of null (reading '_id')
+[35merror[39m: Error al eliminar la orden Cannot read properties of null (reading '_id')
+[35merror[39m: Error al eliminar la orden Cannot read properties of null (reading '_id')
+[35merror[39m: Error al eliminar la orden Cannot read properties of null (reading '_id')
+[35merror[39m: Error al eliminar la orden Cannot read properties of null (reading '_id')
+[35merror[39m: Error al eliminar la orden Cannot read properties of null (reading '_id')
+[35merror[39m: Error al eliminar la orden Cannot read properties of null (reading '_id')
+[35merror[39m: Error al eliminar la orden Cannot read properties of null (reading '_id')
+[35merror[39m: Error al eliminar la orden Cannot read properties of null (reading '_id')
+[35merror[39m: Error al eliminar la orden Cannot read properties of null (reading '_id')
+[35merror[39m: Error al eliminar la orden result is not defined
+[35merror[39m: Error al eliminar la orden result is not defined

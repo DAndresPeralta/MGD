@@ -25,9 +25,9 @@ FALTA HACER:
 
 - ORDENES
 
-  - | Tarea          | Descripción                                                    | Estado        |
-    | -------------- | -------------------------------------------------------------- | ------------- |
-    | Eliminar Orden | Al eliminar una orden, tambien eliminarla del cliente **(MS)** | **Pendiente** |
+  - | Tarea          | Descripción                                                    | Estado       |
+    | -------------- | -------------------------------------------------------------- | ------------ |
+    | Eliminar Orden | Al eliminar una orden, tambien eliminarla del cliente **(MS)** | **Completo** |
 
 ## LIBRO DE CAMPO
 
