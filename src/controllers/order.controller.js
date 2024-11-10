@@ -217,10 +217,20 @@ export const deleteProductFromOrder = async (req, res) => {
   }
 };
 
-// Elimina la orden completa
+// Elimina la orden completa y del cliente. MANEJO MUY SENSIBLE DE DATOS, SOLO MAESTROS
 export const deleteOrderController = async (req, res) => {
   try {
     const id = req.params.id;
+    // Traigo la orden completa a partir del id.
+    const order = await getOrderById(id);
+    // Traigo el cliente que posee esa orden a partir de su id. Se busca en el array order el id del cliente.
+    const client = await getClientById(order.client[0].client._id.toString());
+    // Elimino la orden del array orders del cliente previamente encontrado.
+    client.orders = client.orders.filter((e) => e.order._id.toString() !== id);
+    // Persisto el cliente modificado.
+    await updateClient(client._id, client);
+    logger.info("Se modifico el array orders del cliente");
+    // Elimino la orden por completo
     const result = await deleteOrder(id);
     logger.info("Orden eliminada correctamente.");
     res.sendSuccess({ result });
