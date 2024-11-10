@@ -70,7 +70,7 @@ export const cookieExtractor = (req) => {
 export const passportCall = (Strategy) => {
   return async (req, res, next) => {
     passport.authenticate(Strategy, (err, user, info) => {
-      if (err) return newt(err);
+      if (err) return next(err);
       if (!user) {
         return res
           .status(401)

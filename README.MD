@@ -11,24 +11,23 @@ TAREAS:
 
 - Desarrollar PEDIDOS y CLIENTES. Trabajar en la asignacion de un pedido a un cliente, el cual contendrá los productos que el cliente pida. En la vistas de podra ingresar a un cliente en particular y se podran ver todos los pedidos del cliente. Los pedidos deberan contar con un atributo "Estado" el cual se modificara de acuerdo al estado del pedido (pendiente, en tránsito, enviado), podria considerarse otro atributo que haga referencia al estado financiero del pedido (impago, pago).
 
-  - | Tarea   | Descripción                                      | Estado        |
-    | ------- | ------------------------------------------------ | ------------- |
-    | Validar | Impedir en el back que se envie formulario vacio | **Pendiente** |
+  - | Tarea   | Descripción                                      | Estado       |
+    | ------- | ------------------------------------------------ | ------------ |
+    | Validar | Impedir en el back que se envie formulario vacio | **En Curso** |
 
 - CLIENTE
 
-  - | Tarea            | Descripción                                                            | Estado        |
-    | ---------------- | ---------------------------------------------------------------------- | ------------- |
-    | Manejo por Code  | En un futuro manejar por Code, no por Id                               | **Pendiente** |
-    | Validar Cuil     | Validar el tamaño del cuil, sin guiones en back                        | **Pendiente** |
-    | Get Client By Id | Al traer el cliente se ve en order el cliente de la orden (Redundante) | **Pendiente** |
+  - | Tarea           | Descripción                                     | Estado        |
+    | --------------- | ----------------------------------------------- | ------------- |
+    | Manejo por Code | En un futuro manejar por Code, no por Id        | **Pendiente** |
+    | Validar Cuil    | Validar el tamaño del cuil, sin guiones en back | **Completo**  |
 
 - ORDENES
 
-  - | Tarea          | Descripción                                                    | Estado        |
-    | -------------- | -------------------------------------------------------------- | ------------- |
-    | Eliminar Orden | Al eliminar una orden, tambien eliminarla del cliente **(MS)** | **Completo**  |
-    | Eliminar Orden | Al ejecutar endpoint, verificar Token, es posible? **(MS)**    | **Pendiente** |
+  - | Tarea          | Descripción                                                    | Estado       |
+    | -------------- | -------------------------------------------------------------- | ------------ |
+    | Eliminar Orden | Al eliminar una orden, tambien eliminarla del cliente **(MS)** | **Completo** |
+    | Eliminar Orden | Al ejecutar endpoint, verificar Token **(MS)**                 | **Completo** |
 
 ## LIBRO DE CAMPO
 

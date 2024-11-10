@@ -6,7 +6,8 @@ import {
   updateProductController,
 } from "../controllers/product.controller.js";
 import CustomRouter from "./router.js";
-import { validateCreate } from "../validators/products.validator.js";
+import { authorization, passportCall } from "../utils/utils.js";
+import { validateCreateProduct } from "../validators/products.validator.js";
 
 // AGREGAR PAGINATE,respuestas especiales como "sin productos almacenados"
 export default class ProductRouter extends CustomRouter {
@@ -15,11 +16,23 @@ export default class ProductRouter extends CustomRouter {
 
     this.get("/product/:id", getProductByIdController);
 
-    this.post("/product", createProductController);
+    this.post("/product", validateCreateProduct, createProductController);
 
-    this.put("/product/:id", updateProductController);
+    // Endpoint protegido por Token y Role, manejo sensible de datos.
+    this.put(
+      "/product/:id",
+      passportCall("jwt"),
+      authorization("ADMIN"),
+      updateProductController
+    );
 
-    this.delete("/product/:id", deleteProductController);
+    // Endpoint protegido por Token y Role, manejo sensible de datos.
+    this.delete(
+      "/product/:id",
+      passportCall("jwt"),
+      authorization("ADMIN"),
+      deleteProductController
+    );
 
     // this.get("/product", async (req, res) => {
     //   try {

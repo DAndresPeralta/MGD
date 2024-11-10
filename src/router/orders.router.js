@@ -6,6 +6,7 @@ import {
   getOrderByIdController,
   updateOrderController,
 } from "../controllers/order.controller.js";
+import { authorization, passportCall } from "../utils/utils.js";
 import CustomRouter from "./router.js";
 
 export default class OrderRouter extends CustomRouter {
@@ -24,6 +25,12 @@ export default class OrderRouter extends CustomRouter {
 
     this.delete("/orderP/:cid/:pid", deleteProductFromOrder);
 
-    this.delete("/order/:id", deleteOrderController);
+    // Endpoint protegido por Token y Role, manejo sensible de datos.
+    this.delete(
+      "/order/:id",
+      passportCall("jwt"),
+      authorization("ADMIN"),
+      deleteOrderController
+    );
   }
 }

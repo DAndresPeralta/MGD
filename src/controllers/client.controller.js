@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import {
   createClient,
   deleteClient,
@@ -59,6 +58,10 @@ export const getClientByCodeController = async (req, res) => {
 export const createClientController = async (req, res) => {
   try {
     const { code, lastName, firstName, company, cuil, email } = req.body;
+
+    if (cuil.toString().length !== 11)
+      return res.sendUserError({ msg: "El cuil debe contener 11 caracteres." });
+
     const existClient = await getClientByCode(code);
 
     if (!existClient) {

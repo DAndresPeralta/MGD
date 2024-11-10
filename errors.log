@@ -35,3 +35,9 @@
 [35merror[39m: Error al eliminar la orden Cannot read properties of null (reading '_id')
 [35merror[39m: Error al eliminar la orden result is not defined
 [35merror[39m: Error al eliminar la orden result is not defined
+[35merror[39m: Error al crear el cliente validateCreateClient is not a function
+[35merror[39m: Error al crear el cliente validate.isEmpty is not a function
+[35merror[39m: Error al crear el cliente errors is not defined
+[35merror[39m: Error al crear el cliente validate.array is not a function
+[35merror[39m: Error al crear el cliente cuil.lenght is not a function
+[35merror[39m: Error al crear el cliente cuil.length is not a function
