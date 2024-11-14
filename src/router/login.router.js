@@ -1,7 +1,7 @@
 import express from "express";
 import passport from "passport";
 import { validateSign } from "../validators/users.validator.js";
-import { generateToken } from "../utils/utils.js";
+import { generateToken, passportCall } from "../utils/utils.js";
 
 const router = express.Router();
 

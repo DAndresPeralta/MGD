@@ -60,7 +60,7 @@ initializePassport();
 app.use(
   cors({
     origin: config.corsOrigin,
-    methods: "GET, POST",
+    methods: "GET, POST, PUT, DELETE",
     credentials: true,
   })
 );
