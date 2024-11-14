@@ -3,6 +3,7 @@ import passport from "passport";
 import local from "passport-local";
 import jwt, { ExtractJwt } from "passport-jwt";
 import userService from "../models/user.model.js";
+import config from "../config/config.js";
 import logger from "../utils/logger.js";
 import {
   cookieExtractor,
@@ -81,7 +82,7 @@ const initializePassport = () => {
     new JWTStrategy(
       {
         jwtFromRequest: ExtractJwt.fromExtractors([cookieExtractor]),
-        secretOrKey: "msg",
+        secretOrKey: config.jwtSecret || "msg",
       },
       async (jwt_payload, done) => {
         try {

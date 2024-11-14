@@ -20,6 +20,7 @@ import initializePassport from "./config/passport.config.js";
 import { passportCall, authorization } from "./utils/utils.js";
 import config from "./config/config.js";
 import cors from "cors";
+import dotenv from "dotenv";
 import compressionMiddleware from "./config/compression.js";
 // --- Test Artillery ---
 import productFaker from "./test/performance/productFaker.js";
@@ -35,6 +36,7 @@ const orderRouter = new OrderRouter();
 
 // ***** SETTINGS *****
 // Hago mi carpeta public estatica para poder acceder
+dotenv.config();
 const publicPath = path.resolve(__dirname, "public");
 app.use(express.static(publicPath));
 // Config Handlebars
@@ -51,13 +53,13 @@ app.set("view engine", "handlebars");
 // Con esta config puedo leer por consola los json que envie o reciba. Sino lo pongo me saldria todo com undefined
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser("msg"));
+app.use(cookieParser(config.cookieSecret));
 app.use(flash());
 app.use(passport.initialize());
 initializePassport();
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: config.corsOrigin,
     methods: "GET, POST, PUT, DELETE",
     credentials: true,
   })
