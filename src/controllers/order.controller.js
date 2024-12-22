@@ -1,4 +1,7 @@
 import mongoose from "mongoose";
+import logger from "../utils/logger.js";
+
+//ORDER
 import {
   createOrder,
   deleteOrder,
@@ -6,8 +9,15 @@ import {
   getOrderById,
   updateOrder,
 } from "../services/order.services.js";
+
+// CLIENTS
 import { getClientById, updateClient } from "../services/client.services.js";
-import logger from "../utils/logger.js";
+
+//PRODUCT
+import {
+  getProductById,
+  updateStockProduct,
+} from "../services/product.services.js";
 
 // Traemos todas las ordenes
 export const getAllOrdersController = async (req, res) => {
@@ -45,6 +55,16 @@ export const createOrderController = async (req, res) => {
         logger.warn("Cliente inexistente");
         return res.sendUserError({ msg: "Cliente inexistente." });
       }
+
+      // --------- UPDATE DE STOCK ---------
+      //Traigo el producto para acceder a su stock
+      const product = await getProductById(item[0].product);
+
+      //Variable local donde guardo el stock modificado
+      let newStock = product.stock - item[0].quantity;
+
+      //Persisto nuevo stock mediante metodo MongoDB
+      await updateStockProduct(product.id, newStock);
 
       const newOrder = {
         client: [{ client: cid }],
@@ -87,6 +107,16 @@ export const createOrderController = async (req, res) => {
         logger.warn("Cliente o producto inexistentes.");
         return res.sendUserError({ msg: "Cliente o producto inexistentes." });
       }
+
+      // --------- UPDATE DE STOCK ---------
+      //Traigo el producto para acceder a su stock
+      const product = await getProductById(item[0].product);
+
+      //Variable local donde guardo el stock modificado
+      let newStock = product.stock - item[0].quantity;
+
+      //Persisto nuevo stock mediante metodo MongoDB
+      await updateStockProduct(product.id, newStock);
 
       const newOrder = {
         client: [{ client: cid }],

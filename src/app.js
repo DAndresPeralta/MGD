@@ -24,6 +24,9 @@ import dotenv from "dotenv";
 import compressionMiddleware from "./config/compression.js";
 // --- Test Artillery ---
 import productFaker from "./test/performance/productFaker.js";
+// --- Documentación ---
+import { swaggerDocs } from "./config/swagger.js";
+import swaggerUiExpress from "swagger-ui-express";
 
 // Server: Creamos el servidor
 // Con los siguientes pasos los que hacemos es levantar un servidor.
@@ -119,6 +122,12 @@ app.use("/api", clientRouter.getRouter());
 app.use("/api", orderRouter.getRouter());
 // Test
 app.use("/api", productFaker);
+// Docs
+app.use(
+  "/api-docs",
+  swaggerUiExpress.serve,
+  swaggerUiExpress.setup(swaggerDocs)
+);
 
 app.listen(PORT, () => {
   console.log("Server running on port: ", PORT);

@@ -25,6 +25,11 @@ export const updateProduct = async (id, product) => {
   return result;
 };
 
+export const updateStockProduct = async (id, stock) => {
+  const result = await Product.updateOne({ _id: id }, { $set: { stock } });
+  return result;
+};
+
 export const deleteProduct = async (id) => {
   const result = await Product.deleteOne({ _id: id });
   return result;
