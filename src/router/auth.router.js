@@ -1,5 +1,6 @@
 import express from "express";
 import { passportCall } from "../utils/utils.js";
+import logger from "../utils/logger.js";
 
 const router = express.Router();
 
@@ -62,7 +63,10 @@ router.get("/auth", passportCall("jwt"), (req, res) => {
 });
 
 router.post("/logout", (req, res) => {
-  res.clearCookie("jwt");
+  logger.debug("Ingresa a /logout");
+  console.log(req.cookies.jwt);
+  res.clearCookie("jwt", { httpOnly: true, secure: true, path: "/" });
+  console.log(req.cookies.jwt);
   return res.status(200).send({
     status: "success",
     message: "Cerrando sesión",

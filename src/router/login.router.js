@@ -118,6 +118,7 @@ router.post(
         httpOnly: true,
         secure: true,
         maxAge: 600000,
+        path: "/",
       });
 
       if (req.user.role === "ADMIN") {
