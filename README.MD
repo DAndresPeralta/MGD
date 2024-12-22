@@ -2,11 +2,13 @@ TAREAS:
 
 - GENERAL
 
+
   - | Tarea      | Descripción                                                  | Estado        |
     | ---------- | ------------------------------------------------------------ | ------------- |
-    | BackEnd M3 | Integrar lo visto en el módulo 3                             | **En curso**  |
+    | BackEnd M3 | Integrar lo visto en el módulo 3 - DOCKER Y KUBERNATES       | **En curso**  |
     | Winston    | Completar para todos los controllers y utilizarlo para debug | **Completo**  |
     | Swagger    | Documentar para **clients** y **user**                       | **Pendiente** |
+
 
 - PRODUCTO
 
