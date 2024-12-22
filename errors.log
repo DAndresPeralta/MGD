@@ -47,5 +47,13 @@
 [35merror[39m: Error al eliminar el producto Cast to ObjectId failed for value "[object CustomEvent]" (type string) at path "_id" for model "product"
 [35merror[39m: Error al eliminar el producto Cast to ObjectId failed for value "[object CustomEvent]" (type string) at path "_id" for model "product"
 [35merror[39m: Error al eliminar el producto Cast to ObjectId failed for value "[object Object]" (type string) at path "_id" for model "product"
+
+[35merror[39m: Error al obtener el producto Cast to ObjectId failed for value "{ _id: ':id' }" (type Object) at path "_id" for model "product"
+[35merror[39m: Error al crear la orden Cannot read properties of undefined (reading '_id')
+[35merror[39m: Error al crear la orden Cannot read properties of undefined (reading '_id')
+[35merror[39m: Error al crear la orden Cannot read properties of undefined (reading '_id')
+[35merror[39m: Error al crear la orden Cannot read properties of undefined (reading 'toString')
+
 [35merror[39m: Error al modificar los productos res.senUserError is not a function
 [35merror[39m: Error al crear el producto Cast to Number failed for value "AA151124" (type string) at path "code" for model "product"
+

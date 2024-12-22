@@ -1,0 +1,229 @@
+openapi: 3.0.1
+info:
+  title: "Documentación de Ordenes"
+  description: "Endpoints relacionados con las ordenes"
+  version: "1.0.0"
+paths:
+  /api/order:
+    get:
+      summary: "Obtiene las ordenes"
+      tags:
+        - order
+      responses:
+        "200":
+          description: "Lista de ordenes obtenidas con éxito"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/order"
+        "500":
+          description: "Error interno del servidor"
+  /api/order/{id}:
+    get:
+      summary: Obtiene solo una orden a partir de su id
+      tags:
+        - order
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id de la orden a buscar en la base de datos
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: "Usuario encontrado"
+          content:
+            application/json:
+              schema:
+                $ref: "#components/schemas/product"
+        "500":
+          description: "Error interno del servidor"
+  /api/ordertest/{cid}/{pid}:
+    post:
+      summary: Agrega una orden a la base de datos
+      tags:
+        - order
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: Id del cliente
+          schema:
+            $type: String
+        - name: pid
+          in: path
+          required: false
+          description: Id del producto
+          schema:
+            $type: String
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#components/requestBodies/postOrder"
+      responses:
+        "200":
+          description: "Se agregó una orden con éxito a la base de datos"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/order"
+        "500":
+          description: "Error interno del servidor"
+    put:
+      summary: Actualiza la orden a partir de su Id (Posible solo con credeciales)
+      tags:
+        - order
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id de la ordenque se desea actualizar
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: Orden modificada con éxito
+          content:
+            application/json:
+              schema:
+                $ref: "#components/schemas/product"
+        "500":
+          description: "Error interno del servidor"
+    delete:
+      summary: Elimina un producto de la base de datos (solo posible con credenciales)
+      tags:
+        - order
+      parameters:
+        - name: id
+          in: path
+          requiered: true
+          description: Id del producto que desea elimnar
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: "Usuario eliminado con éxito"
+        "500":
+          description: "Error interno del servido"
+  /api/orderP/{cid}/{pid}:
+    delete:
+      summary: "Elimina un producto perteneciente a una orden"
+      tags:
+        - order
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: Id de la orden que se desea eliminar
+          schema:
+            $type: String
+        - name: pid
+          in: path
+          required: true
+          description: Id del producto que se desea eliminar
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: "Producto eliminado de la orden"
+        "500":
+          description: "Error interno del servidor"
+components:
+  schemas:
+    order:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: Id autogenerados por MongoDB
+        client:
+          type: array
+          description: Lista de clientes relacionados con la orden.
+          items:
+            type: object
+            properties:
+              client:
+                type: string
+                format: objectId
+                description: ID del cliente (referencia a la colección `client`).
+        item:
+          type: array
+          description: Lista de productos en la orden.
+          items:
+            type: object
+            properties:
+              product:
+                type: string
+                format: objectId
+                description: ID del producto (referencia a la colección `product`).
+              quantity:
+                type: integer
+                description: Cantidad del producto en la orden.
+        status:
+          type: string
+          description: Estado de la orden (por ejemplo, "pendiente", "completado").
+        pay:
+          type: string
+          description: Método o estado de pago (por ejemplo, "pagado", "pendiente").
+      example:
+        _id: ObjectId("ajjdu375827rhabav18a5b")
+        client:
+          - client: "60a8f2437d12345678bdf123"
+        item:
+          - product: "60a8f2437d12345678bdf124"
+            quantity: 3
+          - product: "60a8f2437d12345678bdf125"
+            quantity: 1
+        status: "pendiente"
+        pay: "pendiente"
+  requestBodies:
+    postOrder:
+      type: object
+      properties:
+        client:
+          type: array
+          description: Lista de clientes relacionados con la orden.
+          items:
+            type: object
+            properties:
+          client:
+            type: string
+            format: objectId
+            description: ID del cliente (referencia a la colección `client`).
+        item:
+          type: array
+          description: Lista de productos en la orden.
+          items:
+            type: object
+            properties:
+              product:
+                type: string
+                format: objectId
+                description: ID del producto (referencia a la colección `product`).
+              quantity:
+                type: integer
+                description: Cantidad del producto en la orden.
+        status:
+          type: string
+          description: Estado de la orden (por ejemplo, "pendiente", "completado").
+        pay:
+          type: string
+          description: Método o estado de pago (por ejemplo, "pagado", "pendiente").
+      example:
+        _id: ObjectId("ajjdu375827rhabav18a5b")
+        client:
+          - client: "60a8f2437d12345678bdf123"
+        item:
+          - product: "60a8f2437d12345678bdf124"
+            quantity: 3
+          - product: "60a8f2437d12345678bdf125"
+            quantity: 1
+        status: "pendiente"
+        pay: "pendiente"

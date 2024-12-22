@@ -1,0 +1,165 @@
+openapi: 3.0.1
+info:
+  title: "Documentación de Productos"
+  description: "Endpoints relacionados con los productos"
+  version: "1.0.0"
+paths:
+  /api/product:
+    get:
+      summary: "Obtiene los productos"
+      tags:
+        - product
+      responses:
+        "200":
+          description: "Lista de productos obtenida con éxito desde la base de datos."
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/product"
+        "500":
+          description: "Error interno del servidor"
+  /api/product/{id}:
+    get:
+      summary: Obtiene un solo producto a partir de su id
+      tags:
+        - product
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id del producto a buscar en la base de datos
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: Usuario encontrado
+          content:
+            application/json:
+              schema:
+                $ref: "#components/schemas/product"
+    put:
+      summary: Actualiza un producto a partir de su Id (Posible solo con credenciales)
+      tags:
+        - product
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id del producto que se desea actualizar
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: Usuario modificado con éxito
+          content:
+            application/json:
+              schema:
+                $ref: "#components/schemas/product"
+        "500":
+          description: "Error interno del servidor"
+    delete:
+      summary: Elimina un producto de la base de datos (solo posible con credenciales)
+      tags:
+        - product
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id del producto que se desea eliminar
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: Usuario eliminado con éxito
+        "500":
+          description: "Error interno del servidor"
+  /api/product/:
+    post:
+      summary: Agrega un producto a la base de datos
+      tags:
+        - product
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#components/requestBodies/postProduct"
+      responses:
+        "200":
+          description: "Se agregó un producto con éxito a la base de datos"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/product"
+        "500":
+          description: "Error interno del servidor"
+components:
+  schemas:
+    product:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: Id autogenerado de MongoDB
+        code:
+          type: number
+          description: Código del producto
+        product:
+          type: string
+          description: Nombre del producto
+        brand:
+          type: string
+          description: Marca del producto
+        weight:
+          type: number
+          description: Gramaje del producto
+        stock:
+          type: number
+          description: Cantidad de producto en stock
+        obs:
+          type: string
+          description: Comentarios acerca del producto
+      example:
+        _id: ObjectId("ajjdu375827rhabav18a5b")
+        code: 011224
+        product: "Queso"
+        brand: "Ilolay"
+        weight: 1000
+        stock: 15
+        obs: "Pronto a vencer"
+  requestBodies:
+    postProduct:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: Id autogenerado de Mongo
+        code:
+          type: number
+          description: Código del producto
+        product:
+          type: string
+          description: Nombre del producto
+        brand:
+          type: string
+          description: Marca del producto
+        weight:
+          type: number
+          description: Gramaje del producto
+        stock:
+          type: number
+          description: Cantidad de producto en stock
+        obs:
+          type: string
+          description: Comentarios acerca del producto
+      example:
+        code: 011224
+        product: "Edulcorante"
+        brand: "Chucker"
+        weight: 750
+        stock: 70
+        obs: "Palet"

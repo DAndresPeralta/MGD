@@ -2,10 +2,13 @@ TAREAS:
 
 - GENERAL
 
-  - | Tarea      | Descripción                                                  | Estado       |
-    | ---------- | ------------------------------------------------------------ | ------------ |
-    | BackEnd M3 | Integrar lo visto en el módulo 3 - DOCKER Y KUBERNATES       | **En curso** |
-    | Winston    | Completar para todos los controllers y utilizarlo para debug | **Completo** |
+
+  - | Tarea      | Descripción                                                  | Estado        |
+    | ---------- | ------------------------------------------------------------ | ------------- |
+    | BackEnd M3 | Integrar lo visto en el módulo 3 - DOCKER Y KUBERNATES       | **En curso**  |
+    | Winston    | Completar para todos los controllers y utilizarlo para debug | **Completo**  |
+    | Swagger    | Documentar para **clients** y **user**                       | **Pendiente** |
+
 
 - PRODUCTO
 
@@ -24,10 +27,12 @@ TAREAS:
 
 - ORDENES
 
-  - | Tarea          | Descripción                                                    | Estado       |
-    | -------------- | -------------------------------------------------------------- | ------------ |
-    | Eliminar Orden | Al eliminar una orden, tambien eliminarla del cliente **(MS)** | **Completo** |
-    | Eliminar Orden | Al ejecutar endpoint, verificar Token **(MS)**                 | **Completo** |
+  - | Tarea          | Descripción                                                    | Estado        |
+    | -------------- | -------------------------------------------------------------- | ------------- |
+    | Eliminar Orden | Al eliminar una orden, tambien eliminarla del cliente **(MS)** | **Completo**  |
+    | Eliminar Orden | Al ejecutar endpoint, verificar Token **(MS)**                 | **Completo**  |
+    | Update Stock   | Al crear orden debe modificarse el stock del producto          | **Completo**  |
+    | Update Stock   | Si el stock es inferior al requerido no se debe crear la orden | **Pendiente** |
 
 ## LIBRO DE CAMPO
 
@@ -85,3 +90,8 @@ TAREAS:
 ### **09/11/24:**
 
 - Se modifico la estructura del directorio.
+
+### **21/12/24:**
+
+- Se documento mediante Swagger para los eendpoints de Product y Order.
+- Se agregó manejo para deducir stock del producto al crear orden.
